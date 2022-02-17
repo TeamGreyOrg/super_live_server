@@ -1,8 +1,14 @@
-# Super_live_commerc_client
+# Super_live_commerc_server
 
 node js version : 14.15.0
+
+
 java version : 15.0.1
+
+
 javac version : 15.0.1
+
+
 react native version 6.4.0
 
 ```bash
@@ -17,7 +23,7 @@ react-native --version
 
 We need the RTMP server first. Download the repository below and follow the README information.
 
-Server : https://github.com/TeamGreyOrg/super_live_server.git
+Client : https://github.com/TeamGreyOrg/super_live_client.git
 
 ## Config
 
