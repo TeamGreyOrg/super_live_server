@@ -70,6 +70,8 @@ const nodeMediaServerConfig = {
         app: 'live',
         vc: "copy",
         vcParam: [],
+        mp4: true,
+        mp4Flags: '[movflags=frag_keyframe+empty_moov]',
         ac: "aac",
         acParam: ['-ab', '64k', '-ac', '1', '-ar', '44100'],
         rtmp:true,

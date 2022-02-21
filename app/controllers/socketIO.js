@@ -34,7 +34,7 @@ module.exports = (io) => {
       socket.join(roomName);
       //add by eddie
       return Room.findOneAndUpdate(
-        { userName: userName },
+        { userName: userName, roomName: roomName },
         { $inc: {countViewer: 1}}
         ).exec((error) => {
           if (error) return;
@@ -50,7 +50,7 @@ module.exports = (io) => {
       if (!userName || !roomName) return;
       socket.leave(roomName);
       return Room.findOneAndUpdate(
-        { userName: userName },
+        { userName: userName, roomName: roomName },
         { $inc: {countViewer: -1}}
         ).exec((error) => {
           if (error) return;
@@ -62,19 +62,20 @@ module.exports = (io) => {
      */
     socket.on('prepare-live-stream', (data) => {
       console.log('Prepare live stream', data);
-      const { userName, roomName, enteredRoomName, enteredProductLink } = data;
+      const { userName, roomName, productLink} = data;
       if (!userName || !roomName) return;
       return Room.findOneAndUpdate(
-        { userName: userName },
+        { userName: userName, roomName: roomName },
         { liveStatus: LiveStatus.PREPARE, createdAt: Utils.getCurrentDateTime()},
+        { new: true, useFindAndModify: false }
       ).exec((error, foundRoom) => {
         if (error) return;
         if (foundRoom) return emitListLiveStreamInfo();
         const condition = {
           userName: userName,
-          roomName: enteredRoomName,
+          roomName: roomName,
           liveStatus: LiveStatus.PREPARE,
-          productLink: enteredProductLink,
+          productLink: productLink,
         };
         return Room.create(condition).then((createdData) => {
           emitListLiveStreamInfo();
@@ -90,7 +91,7 @@ module.exports = (io) => {
       const { userName, roomName } = data;
       if (!userName || !roomName) return;
       return Room.findOneAndUpdate(
-        { userName: userName },
+        { userName: userName, roomName: roomName },
         { liveStatus: LiveStatus.ON_LIVE, beginAt: Utils.getCurrentDateTime() },
         { new: true, useFindAndModify: false }
       ).exec((error, foundRoom) => {
@@ -99,15 +100,15 @@ module.exports = (io) => {
           io.in(roomName).emit('begin-live-stream', foundRoom);
           return emitListLiveStreamInfo();
         }
-        const condition = {
-          userName,
-          roomName,
-          liveStatus: LiveStatus.ON_LIVE,
-        };
-        return Room.create(condition).then((createdData) => {
-          io.in(roomName).emit('begin-live-stream', createdData);
-          emitListLiveStreamInfo();
-        });
+        // const condition = {
+        //   userName,
+        //   roomName,
+        //   liveStatus: LiveStatus.ON_LIVE,
+        // };
+        // return Room.create(condition).then((createdData) => {
+        //   io.in(roomName).emit('begin-live-stream', createdData);
+        //   emitListLiveStreamInfo();
+        // });
       });
     });
 
@@ -120,7 +121,7 @@ module.exports = (io) => {
       const filePath = Utils.getMp4FilePath();
       if (!userName || !roomName) return;
       return Room.findOneAndUpdate(
-        { userName: userName },
+        { userName: userName, roomName: roomName },
         { liveStatus: LiveStatus.FINISH, filePath },
         { new: true, useFindAndModify: false }
       ).exec((error, updatedData) => {
@@ -138,7 +139,7 @@ module.exports = (io) => {
         console.log('Cancel live stream');
         const { userName, roomName } = data;
         return Room.findOneAndUpdate(
-          { userName: userName },
+          { userName: userName, roomName: roomName },
           { liveStatus: LiveStatus.CANCEL },
           { new: true, useFindAndModify: false }
         ).exec((error, updatedData) => {
@@ -162,9 +163,9 @@ module.exports = (io) => {
      */
     socket.on('send-message', (data) => {
       console.log('Send message');
-      const { roomName = '', message, userName } = data;
+      const { roomName, message, userName } = data;
       return Room.findOneAndUpdate(
-        { userName: userName },
+        { userName: userName, roomName: roomName},
         {
           $push: { messages: { message, userName, createdAt: Utils.getCurrentDateTime() } },
         },
