@@ -97,6 +97,7 @@ module.exports = (io) => {
     socket.on('begin-live-stream', (data) => {
       console.log('Begin live stream', data);
       const { userName, roomName } = data;
+      console.log(userName, roomName);
       if (!userName || !roomName) return;
       return Room.findOneAndUpdate(
         { userName: userName, roomName: roomName },
