@@ -29,10 +29,6 @@ const RoomSchema = new Schema({
     type: Number,
     default: 0,
   },
-  roomImage: {
-    type: String,
-    default: 'sample1.png',
-  },
   productLink: {
     type: String,
   },

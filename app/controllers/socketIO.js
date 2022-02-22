@@ -12,6 +12,12 @@ module.exports = (io) => {
     });
   }
 
+  function emitViewerCount(userName, roomName) {
+    return Room.findOne({ userName: userName, roomName: roomName }, (error, result) => {
+      io.emit('update-viewer-count', result);
+    });
+  }
+
   io.on('connection', (socket) => {
     console.log('New connection');
 
@@ -38,6 +44,7 @@ module.exports = (io) => {
         { $inc: {countViewer: 1}}
         ).exec((error) => {
           if (error) return;
+          return emitViewerCount(userName, roomName);
       });
     });
 
@@ -54,6 +61,7 @@ module.exports = (io) => {
         { $inc: {countViewer: -1}}
         ).exec((error) => {
           if (error) return;
+          return emitViewerCount(userName, roomName);
       });
     });
 
@@ -165,7 +173,7 @@ module.exports = (io) => {
       console.log('Send message');
       const { roomName, message, userName } = data;
       return Room.findOneAndUpdate(
-        { userName: userName, roomName: roomName},
+        { roomName: roomName },
         {
           $push: { messages: { message, userName, createdAt: Utils.getCurrentDateTime() } },
         },
