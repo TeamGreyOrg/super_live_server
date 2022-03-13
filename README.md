@@ -1,9 +1,15 @@
 # Super_live_commerc_server
 Welcome to Super Live Commerce! 
 
-Our Server Structure
+You can see our presentation in 
+https://docs.google.com/presentation/d/110ow7Zs_uaOli02OA1jQhR6tVWku5T0aa1aZ9W2iSII/edit?usp=sharing
+
+###Server Structure
+
 
 <img width="924" alt="structure" src="https://user-images.githubusercontent.com/52844717/158049078-3754f482-ad6e-49e9-8ed3-96be9ee6cee2.png">
+
+>Setting
 
 node js version : 14.15.0
 
