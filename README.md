@@ -16,18 +16,22 @@ javac version : 15.0.1
 
 react native version 6.4.0
 
+
+nginx version 1.14.0
+
 ```bash
 node -v
 java --version
 javac --version
 react-native --version
-```
+nginx -v
 
 ## Prerequisite
 
 - Install NodeJS (https://nodejs.org)
 - Install ffmpeg (https://www.ffmpeg.org/download.html). If you are using MacOS just type _brew install ffmpeg_
 - MongoDB (https://www.mongodb.com/)
+- Nginx-RTMP Server (https://github.com/arut/nginx-rtmp-module). Setting nginx.conf in your '/etc/nginx' directory
 
 Then start MongoDB. Then type the following to terminal
 
@@ -91,4 +95,9 @@ or
 yarn run run-android
 ```
 
+### Streaming Format provided 
+mp4/hls/dash
 
+#Adaptive Bitrate Streaming Feature
+
+![Adaptive Bitrate Streaming](https://user-images.githubusercontent.com/52844717/158050150-abb4a790-f329-4d94-857e-5a61f799090d.png)
