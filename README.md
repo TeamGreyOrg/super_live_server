@@ -1,8 +1,8 @@
 # Super_live_commerc_server
 Welcome to Super Live Commerce! 
-![logo](https://user-images.githubusercontent.com/52844717/158049041-2bf0a3f0-e662-4b48-80e2-2189529ac1a1.png)
 
 Our Server Structure
+
 <img width="924" alt="structure" src="https://user-images.githubusercontent.com/52844717/158049078-3754f482-ad6e-49e9-8ed3-96be9ee6cee2.png">
 
 node js version : 14.15.0
@@ -23,6 +23,37 @@ javac --version
 react-native --version
 ```
 
+## Prerequisite
+
+- Install NodeJS (https://nodejs.org)
+- Install ffmpeg (https://www.ffmpeg.org/download.html). If you are using MacOS just type _brew install ffmpeg_
+- MongoDB (https://www.mongodb.com/)
+
+Then start MongoDB. Then type the following to terminal
+
+```
+# mongo
+```
+
+Then switch to admin database
+
+```
+> use admin
+```
+
+Then create user admin
+
+```
+db.createUser({
+  user: 'admin',
+  pwd: '123456',
+  roles: [
+    { role: 'userAdminAnyDatabase', db: 'admin' },
+    { role: 'dbAdminAnyDatabase', db: 'admin' },
+    { role: 'readWriteAnyDatabase', db: 'admin' }
+  ]
+})
+```
 
 ## Getting Started
 
