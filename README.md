@@ -20,16 +20,12 @@ java version : 15.0.1
 javac version : 15.0.1
 
 
-react native version 6.4.0
-
-
 nginx version 1.14.0
 
 ```bash
 node -v
 java --version
 javac --version
-react-native --version
 nginx -v
 
 ## Prerequisite
