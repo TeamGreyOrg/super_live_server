@@ -98,6 +98,6 @@ yarn run run-android
 ### Streaming Format provided 
 mp4/hls/dash
 
-#Adaptive Bitrate Streaming Feature
+> Adaptive Bitrate Streaming Feature
 
 ![Adaptive Bitrate Streaming](https://user-images.githubusercontent.com/52844717/158050150-abb4a790-f329-4d94-857e-5a61f799090d.png)
