@@ -1,6 +1,23 @@
 # Super_live_commerc_server
 Welcome to Super Live Commerce! 
 
+## 소개
+![ezgif-5-9b897b13cd](https://user-images.githubusercontent.com/49712957/158364719-392452d9-88cb-4af2-9408-caf9b30dc89d.gif)
+
+제작 기간: 2022.02.03 ~ 2022. 3.11
+## 주요 기능
+- ✅  진행중인 모든 라이브 방송 프리뷰 제공
+- ✅  시청자와 스트리머 간 채팅, 하트 보내기
+- ✅  시청자 수와 입장시 알림 기능
+- ✅  Drag and Drop을 이용한 2채널 동시 시청
+- ✅  앱 내 pip 기능
+- ✅  스트리머에게 url을 받아 상품페이지로 이동 가능한 배너 생성 (시청 페이지 only)
+- ✅  지나간 방송 다시보기
+
+**이후 구현 예정 기능**
+- 🟩  다시보기시 채팅, 하트 등 방송 이벤트 보기
+- 🟩  홈화면과 동시시청 페이지에서 상품 배너 띄우기
+
 You can see our presentation in 
 https://docs.google.com/presentation/d/110ow7Zs_uaOli02OA1jQhR6tVWku5T0aa1aZ9W2iSII/edit?usp=sharing
 
