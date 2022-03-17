@@ -21,6 +21,8 @@ Welcome to Super Live Commerce!
 You can see our presentation in 
 https://docs.google.com/presentation/d/110ow7Zs_uaOli02OA1jQhR6tVWku5T0aa1aZ9W2iSII/edit?usp=sharing
 
+## 소개
+![OnAirSuperLive 포스터](https://user-images.githubusercontent.com/49712957/158327013-9d44cc0b-5fa8-42e7-a53a-1b6b9c7047b2.jpg)
 ### Server Structure
 
 
